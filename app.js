@@ -2,7 +2,7 @@
 
 //初始化bmob
 var Bmob = require('utils/bmob.js');
-Bmob.initialize("fe59fe3ce8bdb1f132202a5a147b289c", "0a2ade658e8f010dc9e56e3c966d4647");
+Bmob.initialize("***", "***");
 
 App({
   onLaunch: function () {
