@@ -1,0 +1,45 @@
+<!--calendar.wxml-->
+<view class="container">
+  <view class="content">
+    <view class="center">
+      <text class="date">{{currentDate}}</text>
+      <view class="tips">
+        <view class="line">
+          <view class="tip">座位朝向: </view>面向
+          <view class="tip direction">{{direction}}</view>写程序，BUG最少
+        </view>
+        <view class="line">
+          <view class="tip">今日宜饮: </view>{{drink}}
+        </view>
+        <view class="line">
+          <view class="tip">女神亲近指数: </view>
+          <view class="star">{{star}}</view>
+        </view>
+      </view>
+      <view class="lucky">
+        <view class="good">
+          <view class="title">宜</view>
+          <view class="table goods">
+            <view class="item" wx:for="{{goods}}">
+              <view class="name">{{item.name}}</view>
+              <view class="desc">{{item.good}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="bad">
+          <view class="title">忌</view>
+          <view class="table bads">
+            <view class="item" wx:for="{{bads}}">
+              <view class="name">{{item.name}}</view>
+              <view class="desc">{{item.bad}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="ps">
+        <view>本老黄历仅面向程序员</view>
+        <view>内容由程序生成，只有这样程序员才会信</view>
+      </view>
+    </view>
+  </view>
+</view>

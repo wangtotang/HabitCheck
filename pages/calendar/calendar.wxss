@@ -1,0 +1,129 @@
+/* calendar.wxss */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  width: 100%;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.date {
+  display: flex;
+  width: 100%;
+  font-size: 16pt;
+  font-weight: bold;
+  line-height: 30pt;
+  justify-content: center;
+  align-content: center;
+}
+
+.tips {
+  display: flex;
+  padding: 0 20rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  padding: 1rpx;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tip {
+  font-weight: bold;
+  text-align: center;
+  margin-right: 2rpx;
+}
+
+.direction {
+  color: orangered;
+}
+
+.star {
+  color: hotpink;
+}
+
+.lucky {
+  display: flex;
+  padding: 0 20rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24rpx;
+}
+
+.good {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #fe4;
+  align-items: center;
+}
+
+.bad {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f44;
+  align-items: center;
+  color: white;
+}
+
+.title {
+  width: 200rpx;
+  justify-content: center;
+  text-align: center;
+  font-size: 19pt;
+  font-weight: bold;
+}
+
+.table {
+  padding-left: 24rpx;
+  color: black;
+  width: 100%;
+}
+
+.goods {
+  background-color: #ffa;
+}
+
+.bads {
+  background-color: #ffddd3;
+}
+
+.item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 15pt;
+  color: #444;
+}
+
+.desc {
+  color: #777;
+  font-size: 11pt;
+  margin-top: 2rpx;
+  font-weight: normal;
+}
+
+.ps {
+  display: flex;
+  flex-direction: column;
+  color: #666;
+  font-size: 12pt;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+}

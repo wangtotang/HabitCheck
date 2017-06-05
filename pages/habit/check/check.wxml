@@ -1,0 +1,39 @@
+<view class="calendar">
+  <view class="time">
+    <view>
+      <text>{{year}}</text>年
+      <text>{{month}}</text>月
+    </view>
+    <view style="text-align: right;">
+      本月已打卡
+      <text style="color: mediumseagreen;">{{monthSignCount}}</text>天
+    </view>
+  </view>
+  <view class="weekName">
+    <view class="weekend">日</view>
+    <view>一</view>
+    <view>二</view>
+    <view>三</view>
+    <view>四</view>
+    <view>五</view>
+    <view class="weekend">六</view>
+  </view>
+  <view class="week">
+    <!--填补空格-->
+    <view wx:for="{{nbsp}}">\n</view>
+    <!--循环日期-->
+    <view wx:for="{{date-1}}" style="color:gainsboro;">
+      <text wx:if="{{item+1==monthSignData[item+1+'']}}" style="color:red;font-size:22rpx;">已打卡</text>
+      <text wx:else="">{{item+1}}</text>
+    </view>
+    <view style="border-bottom: 1px solid green; padding-bottom:8rpx;">
+      <text wx:if="{{date==monthSignData[date+'']}}" style="color:green;font-size:22rpx;  border-radius: 50%;background-color: ghostwhite">已打卡</text>
+      <text wx:else="" style="color:red;">{{date}}</text>
+    </view>
+    <view wx:for="{{monthDaySize-date}}">{{item+date+1}}</view>
+  </view>
+  <view style="margin: 20rpx;">
+    <button type="warn" wx:if="{{date!=monthSignData[date+'']}}" bindtap="monthSign">打卡</button>
+    <button wx:else="">今日已打卡</button>
+  </view>
+</view>

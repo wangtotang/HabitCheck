@@ -1,0 +1,23 @@
+/* pages/index/index.wxss */
+
+.name {
+  display: flex;
+  flex-direction: row;
+  font-size: 25px;
+  color: #666;
+  margin: 20px 15px;
+  border-bottom: 1rpx solid #e5e5e5;
+  align-items: center;
+}
+
+.name view:last-child {
+  flex: 1;
+  text-align: right;
+}
+
+.avatar {
+  width: 68rpx;
+  height: 68rpx;
+  margin: 20rpx 15px;
+  border-radius: 50%;
+}

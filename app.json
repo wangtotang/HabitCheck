@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/calendar/calendar",
+    "pages/habit/list/list",
+    "pages/habit/add/add",
+    "pages/habit/check/check",
+    "pages/rank/rank",
+    "pages/person/person",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1aad19",
+    "navigationBarTitleText": "悠然打卡",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/calendar/calendar",
+        "iconPath": "images/ic_home_n.png",
+        "selectedIconPath": "images/ic_home_p.png",
+        "text": "首页"
+      },{
+        "pagePath": "pages/habit/list/list",
+        "iconPath": "images/ic_list_n.png",
+        "selectedIconPath": "images/ic_list_p.png",
+        "text": "习惯"
+      },{
+        "pagePath": "pages/rank/rank",
+        "iconPath": "images/ic_rank_n.png",
+        "selectedIconPath": "images/ic_rank_p.png",
+        "text": "排名"
+      },{
+        "pagePath": "pages/person/person",
+        "iconPath": "images/ic_my_n.png",
+        "selectedIconPath": "images/ic_my_p.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

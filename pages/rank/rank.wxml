@@ -1,0 +1,11 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <block wx:for="{{rank}}">
+    <view class="name">
+      <view>{{index+1}}</view>
+      <image class="avatar" src="{{item.userPic}}"></image>
+      <view style="padding-left:40rpx;">{{item.nickName}}</view>
+      <view>{{item.totalCount}}天</view>
+    </view>
+  </block>
+</view>

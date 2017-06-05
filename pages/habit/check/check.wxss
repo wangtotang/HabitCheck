@@ -1,0 +1,51 @@
+.calendar {
+  margin: 0 1vw;
+}
+
+.time {
+  padding: 16rpx 20rpx;
+  background-color: wheat;
+  display: flex;
+}
+
+.time view {
+  flex: 1;
+  font-size: 30rpx;
+}
+
+.time view text {
+  font-size: 38rpx;
+}
+
+.weekName {
+  background-color: gainsboro;
+  width: 100%;
+  display: flex;
+  padding: 16rpx 0;
+}
+
+.weekName view {
+  flex: 1;
+  text-align: center;
+}
+
+.weekend {
+  color: red;
+}
+
+.week {
+  width: 100%;
+}
+
+.week view {
+  width: 14.2%;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: inline-block;
+  margin: 20rpx 0;
+  text-align: center;
+}
+
+page {
+  padding-top: 10rpx;
+}

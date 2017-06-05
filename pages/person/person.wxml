@@ -1,0 +1,36 @@
+<!--person.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <view class="list">
+      <view class="block">
+        <view>
+          <text class="icon icon-person"></text>用户名</view>
+        <view>{{userInfo.nickName}}</view>
+      </view>
+      <view class="block">
+        <view>
+          <text class="icon icon-sex"></text>性别</view>
+        <view>{{userInfo.gender}}</view>
+      </view>
+      <view class="block">
+        <view>
+          <text class="icon icon-country"></text>国家</view>
+        <view>{{userInfo.country}}</view>
+      </view>
+      <view class="block">
+        <view>
+          <text class="icon icon-province"></text>省份</view>
+        <view>{{userInfo.province}}</view>
+      </view>
+      <view class="block">
+        <view>
+          <text class="icon icon-city"></text>城市</view>
+        <view>{{userInfo.city}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="page-footer">
+    copyright©2017 martintong.com
+  </view>
+</view>

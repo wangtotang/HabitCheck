@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="content">
+    <view class="add">
+      <button type="primary" plain="true" bindtap="addHabit">添加</button>
+    </view>
+    <block wx:for="{{habits}}">
+      <view class="item" bindlongtap="deleteHabit" data-id="{{item.objectId}}">
+        <navigator url="../check/check?id={{item.objectId}}&title={{item.title}}">
+          <view class="round">
+            <image class="img" src="{{category[item.category].icon}}"></image>
+            <view>
+              <view class="name">{{item.title}}</view>
+              <view class="desc">已坚持{{item.totalCount}}天</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </block>
+  </view>
+</view>

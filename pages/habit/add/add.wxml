@@ -1,0 +1,47 @@
+<!--add.wxml-->
+<import src="../../../components/toast/toast.wxml" />
+
+<view class="container">
+  <form bindsubmit="addHabit">
+    <view class="zan-panel">
+      <view class="zan-cell">
+        <view class="zan-cell__bd">标题</view>
+        <view class="zan-cell__ft">
+          <input maxlength="30" name="title" placeholder="请输入标题"/>
+        </view>
+      </view>
+      <view class="zan-cell zan-cell--access">
+        <view class="zan-cell__bd">类别</view>
+        <view wx:if="{{typeItem==''}}" class="zan-cell__ft" bindtap="showDialog">选择类别</view>
+        <view wx:else="" class="zan-cell__ft" bindtap="showDialog">{{typeItem}}</view>
+      </view>
+      <view class="zan-cell">
+        <view class="zan-cell__bd" style="margin-right:30rpx;">描述</view>
+        <view class="text_area">
+          <textarea style="width:560rpx;" auto-height maxlength="100" name="desc" />
+        </view>
+      </view>
+    </view>
+    <view style="margin: 20rpx;">
+      <button type="primary" form-type="submit">保存</button>
+    </view>
+  </form>
+
+  <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+    <view class="zan-dialog__mask" bindtap="showDialog" />
+    <view class="zan-dialog__container">
+      <view style="padding: 40rpx 0; text-align: center;">
+        <view class="type">
+          <view wx:for="{{category}}" bindtap="selectType" data-type="{{index}}">
+            <view class="item">
+              <image src="{{item.icon}}" style="width:56rpx;height:56rpx;"></image>
+              <view>{{item.name}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<template is="zan-toast" data="{{zanToast}}"></template>
