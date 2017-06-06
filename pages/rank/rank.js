@@ -2,11 +2,12 @@
 
 var Event = require('../../utils/event.js');
 var Bmob = require('../../utils/bmob.js');
+var Toast = require('../../components/toast/toast');
 
 var total = 0,
   rankList = [];
 
-Page({
+Page(Object.assign({}, Toast,{
 
   /**
    * 页面的初始数据
@@ -40,7 +41,7 @@ Page({
     });
 
     this.getRank();
-   
+
   },
 
   onUnload: function () {
@@ -56,9 +57,9 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title:'打卡排行榜',
-      path:'pages/rank/rank',
-      success(res){
+      title: '打卡排行榜',
+      path: 'pages/rank/rank',
+      success(res) {
         wx.showToast({
           title: '转发成功',
           icon: 'success',
@@ -71,7 +72,8 @@ Page({
   /**
    * 获取排名
    */
-  getRank(){
+  getRank() {//todo:2017-6-6 打卡天数相同，习惯多的排前面，一样多时，昵称排前
+    let that = this;
     rankList = [];
     let User = Bmob.Object.extend('_User');
     let query = new Bmob.Query(User);
@@ -81,28 +83,39 @@ Page({
         if (res.length > 0) {
           total = res.length;
           for (let user of res) {
-            //console.log(user.get('nickName'));
-            let Habit = Bmob.Object.extend('habit');
-            let query = new Bmob.Query(Habit);
-            query.equalTo('own', user);
-            query.descending('totalCount');
-            query.include('own');
-            query.find({
-              success(results) {
-                //console.log(results.length);
-                if (results.length > 0) {
-                  let userModel = new UserModel(user.get('nickName'), user.get('userPic'), results[0].get('totalCount'));
-                  rankList.push(userModel);
-                  Event.getInstance().emit('rank', '');
+            if (user.get('nickName')) {
+              //console.log(user.get('nickName'));
+              let Habit = Bmob.Object.extend('habit');
+              let query = new Bmob.Query(Habit);
+              query.equalTo('own', user);
+              query.descending('totalCount');
+              query.find({
+                success(results) {
+                  //console.log(results.length);
+                  if (results.length > 0) {
+                    let userModel = new UserModel(user.get('nickName'), user.get('userPic'), results[0].get('totalCount'));
+                    rankList.push(userModel);
+                    Event.getInstance().emit('rank', '');
+                  }
+                },
+                error(results, err) {
+                  wx.stopPullDownRefresh();
+                  that.showZanToast('网络异常');
                 }
-              },
-            });
+              });
+            }else{
+              total--;
+            }
           }
         }
+      },
+      error(results, err) {
+        wx.stopPullDownRefresh();
+        that.showZanToast('网络异常');
       }
     });
   },
-});
+}))
 
 class UserModel {
   constructor(nickName, userPic, totalCount) {

@@ -102,6 +102,7 @@ Page(Object.assign({}, Toast, {
       UserModel.id = currentUser.id;
       habit.set('own',UserModel);
     }
+    let that = this;
     habit.save(null,{
       success(result){
         wx.hideLoading();
@@ -117,11 +118,7 @@ Page(Object.assign({}, Toast, {
       },
       error(result,err){
         wx.hideLoading();
-        wx.showToast({
-          title: '添加习惯失败，请重新添加',
-          icon: 'loading',
-          duration: 2000,
-        });
+        that.showZanToast('添加习惯失败，请重新添加');
       }
     });
   },

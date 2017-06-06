@@ -1,4 +1,5 @@
 
+var Toast = require('../../../components/toast/toast');
 var Event = require('../../../utils/event.js');
 var Bmob = require('../../../utils/bmob.js');
 
@@ -11,7 +12,7 @@ var date,
   monthSign,
   monthKey = '';
 
-Page({
+Page(Object.assign({}, Toast,{
   /**
   * 页面的初始数据
   */
@@ -183,11 +184,7 @@ Page({
         });
       },
       error(result, err) {
-        wx.showToast({
-          title: '打卡失败，请重新打卡',
-          icon: 'loading',
-          duration: 2000,
-        });
+        that.showZanToast('打卡失败，请重新打卡');
       }
     });
 
@@ -208,4 +205,4 @@ Page({
     //   monthSignData: habitData.monthSignData[monthKey],
     // });
   },
-})
+}))

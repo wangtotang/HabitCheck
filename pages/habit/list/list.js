@@ -69,7 +69,13 @@ Page({
     let Habit = Bmob.Object.extend('habit');
     let query = new Bmob.Query(Habit);
     query.descending('updatedAt');
-    query.include('own');
+    let currentUser = Bmob.User.current();
+    let User = Bmob.Object.extend("_User");
+    let UserModel = new User();
+    if (currentUser) {
+      UserModel.id = currentUser.id;
+      query.equalTo('own', UserModel);
+    }
     query.find({
       success(results) {
         that.setData({

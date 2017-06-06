@@ -20,37 +20,44 @@ App({
         success(res) {
           user.loginWithWeapp(res.code).then(user => {
             let openid = user.get('authData').weapp.openid;
-            console.log("openid" + openid);
+            //console.log("openid" + openid);
             if (user.get('nickName')) {
               wx.setStorageSync('openid', openid);
             } else {
-              that.getUserInfo((userInfo) => {
-                let u = Bmob.Object.extend('_User');
-                let query = new Bmob.Query(u);
-                query.get(user.id, {
-                  success(result) {
-                    //注册用户
-                    result.set('nickName', userInfo.nickName);
-                    result.set('userPic', userInfo.avatarUrl);
-                    result.set('openid', openid);
-                    result.save();
+              wx.login({
+                success: function () {
+                  wx.getUserInfo({
+                    success: function (res) {
+                      let userInfo = res.userInfo;
+                      let u = Bmob.Object.extend('_User');
+                      let query = new Bmob.Query(u);
+                      query.get(user.id, {
+                        success(result) {
+                          //注册用户
+                          result.set('nickName', userInfo.nickName);
+                          result.set('userPic', userInfo.avatarUrl);
+                          result.set('openid', openid);
+                          result.save();
 
-                    //默认习惯
-                    for (let habit of that.globalData.iHabit) {
-                      let Habit = Bmob.Object.extend('habit');
-                      let tmp = new Habit();
-                      tmp.set('title', habit.title);
-                      tmp.set('category', habit.category);
-                      tmp.set('desc', '');
-                      tmp.set('totalCount', 0);
-                      //关联用户
-                      tmp.set('own', result);
-                      tmp.save();
+                          //默认习惯
+                          for (let habit of that.globalData.iHabit) {
+                            let Habit = Bmob.Object.extend('habit');
+                            let tmp = new Habit();
+                            tmp.set('title', habit.title);
+                            tmp.set('category', habit.category);
+                            tmp.set('desc', '');
+                            tmp.set('totalCount', 0);
+                            //关联用户
+                            tmp.set('own', result);
+                            tmp.save();
+                          }
+
+                        },
+                      });
                     }
-
-                  },
-                });
-              });
+                  })
+                }
+              })
             }
           });
         },
