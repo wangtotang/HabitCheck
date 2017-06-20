@@ -3,9 +3,10 @@
   <block wx:for="{{rank}}">
     <view class="name">
       <view>{{index+1}}</view>
-      <image class="avatar" src="{{item.userPic}}"></image>
-      <view style="padding-left:40rpx;">{{item.nickName}}</view>
+      <image class="avatar" src="{{item.user.userPic}}"></image>
+      <view style="padding-left:40rpx;">{{item.user.nickName}}</view>
       <view>{{item.totalCount}}天</view>
     </view>
   </block>
+  <view wx:if="{{rank.length <= 0}}" style="text-align:center;margin-top:4rem">无排名数据</view>
 </view>
